@@ -62,5 +62,13 @@ class GameManager {
         roundsDone += 1
     }
     
-    func checkOrder() {}
+    func seriesSortedByYear() -> [String] {
+        var titlesSorted = [String]()
+        let seriesSortedByYear = selectedSeries.sorted(by:{ ($0.year) < ($1.year) })
+        for series in seriesSortedByYear {
+            titlesSorted.append(series.title)
+        }
+        
+        return titlesSorted
+    }
 }
