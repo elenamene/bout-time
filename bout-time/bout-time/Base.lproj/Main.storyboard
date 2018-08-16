@@ -24,7 +24,7 @@
                                 <subviews>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBC-BJ-NBm">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Select level:">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -88,7 +88,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxw-ta-tix">
                                                         <rect key="frame" x="16" y="0.0" width="279" height="76.5"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -150,7 +150,7 @@
                                                 <rect key="frame" x="295" y="0.0" width="40" height="76.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Mi-jW-L8k">
-                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="38.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="39"/>
                                                         <state key="normal" image="up_half"/>
                                                         <state key="selected" image="up_half_selected"/>
                                                         <state key="highlighted" image="up_half_selected"/>
@@ -159,7 +159,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKs-zQ-g15">
-                                                        <rect key="frame" x="0.0" y="38.5" width="40" height="38"/>
+                                                        <rect key="frame" x="0.0" y="39" width="40" height="37.5"/>
                                                         <state key="normal" image="down_half"/>
                                                         <state key="selected" image="down_half_selected"/>
                                                         <state key="highlighted" image="down_half_selected"/>
@@ -204,7 +204,7 @@
                                                 <rect key="frame" x="295" y="0.0" width="40" height="76.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pO-UG-3Ok">
-                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="38.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="39"/>
                                                         <state key="normal" image="up_half"/>
                                                         <state key="selected" image="up_half_selected"/>
                                                         <state key="highlighted" image="up_half_selected"/>
@@ -213,7 +213,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpT-DV-Sjy">
-                                                        <rect key="frame" x="0.0" y="38.5" width="40" height="38"/>
+                                                        <rect key="frame" x="0.0" y="39" width="40" height="37.5"/>
                                                         <state key="normal" image="down_half"/>
                                                         <state key="selected" image="down_half_selected"/>
                                                         <state key="highlighted" image="down_half_selected"/>
@@ -312,7 +312,7 @@
                                                 <rect key="frame" x="295" y="0.0" width="40" height="76.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8I-Iu-PcA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="38.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="39"/>
                                                         <state key="normal" image="up_half"/>
                                                         <state key="selected" image="up_half_selected"/>
                                                         <state key="highlighted" image="up_half_selected"/>
@@ -321,7 +321,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-fh-slI">
-                                                        <rect key="frame" x="0.0" y="38.5" width="40" height="38"/>
+                                                        <rect key="frame" x="0.0" y="39" width="40" height="37.5"/>
                                                         <state key="normal" image="down_half"/>
                                                         <state key="selected" image="down_half_selected"/>
                                                         <state key="highlighted" image="down_half_selected"/>
@@ -401,36 +401,34 @@
                                     <constraint firstAttribute="height" constant="40" id="YID-j1-ElI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1K-nB-45V">
-                                <rect key="frame" x="334" y="676" width="39.5" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sr1-Jl-emW">
-                                <rect key="frame" x="35" y="676" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Solution" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcf-2a-XgZ">
-                                <rect key="frame" x="32" y="632" width="56" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BrN-ga-Hjt">
+                                <rect key="frame" x="20" y="611" width="335" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sr1-Jl-emW">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0:35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1K-nB-45V">
+                                        <rect key="frame" x="272" y="0.0" width="63" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.16078431372549018" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.38823529411764707" green="0.23921568627450979" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Elu-zT-Yst" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5g3-76-76n"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Rcl-RW-miM" secondAttribute="bottom" constant="32" id="6Vk-kq-NDT"/>
                             <constraint firstItem="CCS-cF-yCK" firstAttribute="top" secondItem="Elu-zT-Yst" secondAttribute="bottom" constant="20" id="Cmv-hg-mdb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gBa-lE-99a" secondAttribute="trailing" constant="20" id="E2q-NL-vzj"/>
                             <constraint firstItem="gBa-lE-99a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="EuY-R5-caf"/>
+                            <constraint firstItem="BrN-ga-Hjt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Gvs-aL-JS2"/>
                             <constraint firstItem="Rcl-RW-miM" firstAttribute="top" secondItem="Elu-zT-Yst" secondAttribute="bottom" constant="32" id="Lti-qv-34L"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BrN-ga-Hjt" secondAttribute="bottom" constant="20" id="MIw-iO-b4X"/>
                             <constraint firstItem="zaf-nb-hdu" firstAttribute="top" secondItem="Elu-zT-Yst" secondAttribute="bottom" constant="20" id="NIU-a7-r1q"/>
                             <constraint firstItem="Elu-zT-Yst" firstAttribute="top" secondItem="gBa-lE-99a" secondAttribute="top" constant="48" id="UV4-Kf-ECk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zaf-nb-hdu" secondAttribute="bottom" constant="20" id="eTX-Yu-ttK"/>
@@ -439,6 +437,7 @@
                             <constraint firstItem="zaf-nb-hdu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oYz-fX-DcB"/>
                             <constraint firstItem="CCS-cF-yCK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sUV-W4-o2C"/>
                             <constraint firstAttribute="trailing" secondItem="Elu-zT-Yst" secondAttribute="trailing" constant="20" id="uRv-Mm-lGx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BrN-ga-Hjt" secondAttribute="trailing" constant="20" id="umk-zM-ylW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CCS-cF-yCK" secondAttribute="bottom" constant="20" id="zon-2B-VTe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -461,7 +460,10 @@
                         <outlet property="option6Label" destination="OIS-R0-btp" id="PeD-zC-yWl"/>
                         <outlet property="option6UpButton" destination="OrA-eC-amM" id="gCE-qL-4Kx"/>
                         <outlet property="option6View" destination="Uip-oE-JeI" id="EjO-9H-5s2"/>
+                        <outlet property="pointsLabel" destination="sr1-Jl-emW" id="D1T-zz-SAu"/>
+                        <outlet property="selectLevelButton" destination="EBC-BJ-NBm" id="Tei-IS-Eoj"/>
                         <outlet property="shakeToCompleteLabel" destination="Rcl-RW-miM" id="aZf-az-5Kh"/>
+                        <outlet property="timerLabel" destination="Q1K-nB-45V" id="z1l-38-m77"/>
                         <outletCollection property="gameLevelButtons" destination="E93-7Z-6lG" collectionClass="NSMutableArray" id="mDk-Ff-ob6"/>
                         <outletCollection property="gameLevelButtons" destination="Ixr-mF-KOO" collectionClass="NSMutableArray" id="UMa-Wr-kAO"/>
                         <outletCollection property="gameLevelButtons" destination="w7N-WS-g3Z" collectionClass="NSMutableArray" id="ZdE-JD-HVo"/>

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     // MARK: - Outlets
   
     @IBOutlet var gameLevelButtons: [UIButton]!
+    @IBOutlet weak var selectLevelButton: UIButton!
     
     @IBOutlet weak var option1View: UIStackView!
     @IBOutlet weak var option2View: UIStackView!
@@ -35,6 +36,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var shakeToCompleteLabel: UILabel!
     @IBOutlet weak var nextRoundSuccessView: UIImageView!
     @IBOutlet weak var nextRoundFailView: UIImageView!
+    
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     // MARK: - Properties
     
@@ -68,6 +72,10 @@ class ViewController: UIViewController {
     // MARK: - Helpers
     
     func displayNewRound() {
+        nextRoundSuccessView.isHidden = true
+        shakeToCompleteLabel.isHidden = false
+        pointsLabel.text = "\(String(gameManager.points)) pts"
+        
         // Select random series
         gameManager.getRandomSetOfSeries()
         
@@ -161,9 +169,40 @@ class ViewController: UIViewController {
             // Keep track of num. of rounds completed
             gameManager.roundsCompleted += 1
             print("Points: \(gameManager.points)")
+            
+            loadNextRound(delay: 3)
+            
         } else {
             print("Wrong order")
+            nextRoundFailView.alpha = 1
             nextRoundFailView.isHidden = false
+            UIView.animate(withDuration: 0.3, delay: 2.0, animations: {
+                self.nextRoundFailView.alpha = 0
+            })
+            shakeToCompleteLabel.isHidden = false
+        }
+    }
+    
+    func nextRound() {
+        
+        if gameManager.roundsCompleted == gameManager.totRounds {
+            // Game is over
+     
+        } else {
+            // Continue game
+           displayNewRound()
+        }
+    }
+    
+    func loadNextRound(delay seconds: Int) {
+        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
+        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
+        // Calculates a time value to execute the method given current time and delay
+        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
+        
+        // Executes the nextRound method at the dispatch time on the main queue
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            self.nextRound()
         }
     }
     
