@@ -57,11 +57,10 @@ class GameManager {
             selectedSeries.append(seriesProvider.allSeries[newRandomIndex])
             
         }
-        /*
+    
         for series in selectedSeries {
             print("\(series.title) \(series.year)")
         }
- */
     }
     
     func seriesSortedByYear() -> [String] {

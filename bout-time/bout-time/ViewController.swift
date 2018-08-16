@@ -21,12 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var option5View: UIStackView!
     @IBOutlet weak var option6View: UIStackView!
     
-    @IBOutlet weak var subviewOption1: UIView!
-    @IBOutlet weak var subviewOption2: UIView!
-    @IBOutlet weak var subviewOption3: UIView!
-    @IBOutlet weak var subviewOption4: UIView!
-    @IBOutlet weak var subviewOption5: UIView!
-    @IBOutlet weak var subviewOption6: UIView!
+    @IBOutlet var optionsSubViews: [UIView]!
     
     @IBOutlet weak var option1Label: UILabel!
     @IBOutlet weak var option2Label: UILabel!
@@ -59,12 +54,9 @@ class ViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         // Set style to views and labels
-        subviewOption1.applyBasicStyle()
-        subviewOption2.applyBasicStyle()
-        subviewOption3.applyBasicStyle()
-        subviewOption4.applyBasicStyle()
-        subviewOption5.applyBasicStyle()
-        subviewOption6.applyBasicStyle()
+        optionsSubViews.forEach { (view) in
+            view.applyBasicStyle()
+        }
         option1Label.applyStyle()
         option2Label.applyStyle()
         option3Label.applyStyle()
@@ -130,6 +122,16 @@ class ViewController: UIViewController {
         }
     }
     
+    func showSolution() {
+        for label in labels {
+            for series in gameManager.selectedSeries {
+                if label.text == series.title {
+                    label.text = "\(series.title) - \(series.year)"
+                }
+            }
+        }
+    }
+    
     // Check order on shake gesture
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         shakeToCompleteLabel.isHidden = true
@@ -141,16 +143,20 @@ class ViewController: UIViewController {
                 currentTitlesOrder.append(title)
             }
         }
+        print(currentTitlesOrder)
+        print(gameManager.seriesSortedByYear())
         
         // Check for correct order
         if currentTitlesOrder == gameManager.seriesSortedByYear() {
             print("Correct order!")
             nextRoundSuccessView.isHidden = false
+            showSolution()
+            
             // Assign points
             switch gameManager.level {
-            case .easy: gameManager.points += 1
-            case .medium: gameManager.points += 3
-            case .difficult: gameManager.points += 5
+            case .easy: gameManager.points += 3
+            case .medium: gameManager.points += 5
+            case .difficult: gameManager.points += 10
             }
             // Keep track of num. of rounds completed
             gameManager.roundsCompleted += 1
@@ -196,6 +202,7 @@ class ViewController: UIViewController {
         hideAllOptions()
         
         // Display new options
+        gameManager.selectedSeries = []
         displayNewRound()
        
         // Hide level buttons

@@ -85,10 +85,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPW-xy-ZY4">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="76.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxw-ta-tix">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxw-ta-tix">
                                                         <rect key="frame" x="16" y="0.0" width="279" height="76.5"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -415,6 +415,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Solution" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcf-2a-XgZ">
+                                <rect key="frame" x="32" y="632" width="56" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.16078431372549018" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -442,28 +449,28 @@
                         <outlet property="nextRoundFailView" destination="zaf-nb-hdu" id="4Bf-mw-TR8"/>
                         <outlet property="nextRoundSuccessView" destination="CCS-cF-yCK" id="VjR-vQ-yUL"/>
                         <outlet property="option1Label" destination="pxw-ta-tix" id="NEv-mU-aa5"/>
-                        <outlet property="option1View" destination="OI0-GN-fmO" id="b6o-pf-LEr"/>
+                        <outlet property="option1View" destination="OI0-GN-fmO" id="QT7-gb-vWi"/>
                         <outlet property="option2Label" destination="XYB-JN-5Vb" id="iH6-h9-sRk"/>
-                        <outlet property="option2View" destination="RxP-03-ScA" id="sNd-0w-ZzQ"/>
+                        <outlet property="option2View" destination="RxP-03-ScA" id="B6p-Oq-36v"/>
                         <outlet property="option3Label" destination="IJE-JT-qzt" id="c2V-UU-ofC"/>
-                        <outlet property="option3View" destination="sWe-Tc-f82" id="UAN-Ng-lPa"/>
+                        <outlet property="option3View" destination="sWe-Tc-f82" id="8S1-Wm-bPu"/>
                         <outlet property="option4Label" destination="ecS-ef-FeR" id="OQT-Mp-a8y"/>
-                        <outlet property="option4View" destination="FU7-HU-0Qa" id="yIf-KS-ohP"/>
+                        <outlet property="option4View" destination="FU7-HU-0Qa" id="chD-kE-60v"/>
                         <outlet property="option5Label" destination="USU-OC-1iD" id="JMQ-D9-aZm"/>
-                        <outlet property="option5View" destination="4mU-x6-UAP" id="K6v-B7-QGh"/>
+                        <outlet property="option5View" destination="4mU-x6-UAP" id="gh9-D9-Tse"/>
                         <outlet property="option6Label" destination="OIS-R0-btp" id="PeD-zC-yWl"/>
                         <outlet property="option6UpButton" destination="OrA-eC-amM" id="gCE-qL-4Kx"/>
-                        <outlet property="option6View" destination="Uip-oE-JeI" id="tD8-pm-KqT"/>
+                        <outlet property="option6View" destination="Uip-oE-JeI" id="EjO-9H-5s2"/>
                         <outlet property="shakeToCompleteLabel" destination="Rcl-RW-miM" id="aZf-az-5Kh"/>
-                        <outlet property="subviewOption1" destination="pPW-xy-ZY4" id="6qZ-Vp-baf"/>
-                        <outlet property="subviewOption2" destination="eFd-rc-Yf1" id="q9L-UO-9l8"/>
-                        <outlet property="subviewOption3" destination="hJr-bc-s7q" id="gwt-BI-Eev"/>
-                        <outlet property="subviewOption4" destination="Jzg-jN-QS1" id="WMf-8w-it7"/>
-                        <outlet property="subviewOption5" destination="hXB-lU-P9p" id="e4N-cc-mRf"/>
-                        <outlet property="subviewOption6" destination="bqA-gp-1LA" id="sjU-xk-aOS"/>
                         <outletCollection property="gameLevelButtons" destination="E93-7Z-6lG" collectionClass="NSMutableArray" id="mDk-Ff-ob6"/>
                         <outletCollection property="gameLevelButtons" destination="Ixr-mF-KOO" collectionClass="NSMutableArray" id="UMa-Wr-kAO"/>
                         <outletCollection property="gameLevelButtons" destination="w7N-WS-g3Z" collectionClass="NSMutableArray" id="ZdE-JD-HVo"/>
+                        <outletCollection property="optionsSubViews" destination="pPW-xy-ZY4" collectionClass="NSMutableArray" id="v5x-zF-hI2"/>
+                        <outletCollection property="optionsSubViews" destination="eFd-rc-Yf1" collectionClass="NSMutableArray" id="2MD-V9-Xcs"/>
+                        <outletCollection property="optionsSubViews" destination="hJr-bc-s7q" collectionClass="NSMutableArray" id="x7x-m4-V5x"/>
+                        <outletCollection property="optionsSubViews" destination="Jzg-jN-QS1" collectionClass="NSMutableArray" id="TsI-su-mb5"/>
+                        <outletCollection property="optionsSubViews" destination="hXB-lU-P9p" collectionClass="NSMutableArray" id="sGP-aJ-MCJ"/>
+                        <outletCollection property="optionsSubViews" destination="bqA-gp-1LA" collectionClass="NSMutableArray" id="7V2-xc-UuA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
