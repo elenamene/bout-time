@@ -7,8 +7,8 @@
 //
 
 
-enum GameLevel {
-    case easy
-    case medium
-    case difficult
+enum GameLevel: String {
+    case easy = "Easy"
+    case medium = "Medium"
+    case difficult = "Difficult"
 }

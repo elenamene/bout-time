@@ -11,23 +11,27 @@ import GameKit
 
 class GameManager {
     var seriesProvider = SeriesProvider()
-    var gameLevel: GameLevel = .medium
+    var level: GameLevel = .easy
     var numOfOptionsPerQuiz = 0
     var totRounds = 6
-    var roundsDone = 0
+    var roundsCompleted = 0
     var points = 0
     var selectedSeries: [Series] = []
     var previousSelectedIndexes: [Int] = []
     var previousSelectedYears: [Int] = []
- 
-    func getRandomSetOfSeries() {
-        
+    
+    func getNumOfOptionsFromLevel() {
         // Define num of options depending on game level selected
-        switch gameLevel {
+        switch level {
         case .easy: numOfOptionsPerQuiz = 4
         case .medium: numOfOptionsPerQuiz = 5
         case .difficult: numOfOptionsPerQuiz = 6
         }
+    }
+ 
+    func getRandomSetOfSeries() {
+        
+        getNumOfOptionsFromLevel()
         
         // Select set of series
         for _ in 1...numOfOptionsPerQuiz {
@@ -53,13 +57,11 @@ class GameManager {
             selectedSeries.append(seriesProvider.allSeries[newRandomIndex])
             
         }
-        
+        /*
         for series in selectedSeries {
             print("\(series.title) \(series.year)")
         }
-        
-        // Keep track of num. of rounds
-        roundsDone += 1
+ */
     }
     
     func seriesSortedByYear() -> [String] {

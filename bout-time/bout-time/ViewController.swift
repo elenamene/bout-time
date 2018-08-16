@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     // MARK: - Outlets
   
+    @IBOutlet var gameLevelButtons: [UIButton]!
+    
     @IBOutlet weak var option1View: UIStackView!
     @IBOutlet weak var option2View: UIStackView!
     @IBOutlet weak var option3View: UIStackView!
@@ -71,35 +73,6 @@ class ViewController: UIViewController {
         option6Label.applyStyle()
     }
     
-    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        print("Device was shaken!")
-        shakeToCompleteLabel.isHidden = true
-        
-        // Get the current order displayed
-        var currentTitlesOrder = [String]()
-        for label in labels {
-            if let title = label.text {
-                currentTitlesOrder.append(title)
-            }
-        }
-        
-        // Check for correct order
-        if currentTitlesOrder == gameManager.seriesSortedByYear() {
-            print("Correct order!")
-            nextRoundSuccessView.isHidden = false
-            // Assign points
-            switch gameManager.gameLevel {
-            case .easy: gameManager.points += 1
-            case .medium: gameManager.points += 3
-            case .difficult: gameManager.points += 5
-            }
-            print("Points: \(gameManager.points)")
-        } else {
-            print("Wrong order")
-            nextRoundFailView.isHidden = false
-        }
-    }
-    
     // MARK: - Helpers
     
     func displayNewRound() {
@@ -109,6 +82,7 @@ class ViewController: UIViewController {
         // Display options
         buildOptionsButtons()
         displayOptionsButtons()
+        self.view.layoutIfNeeded()
         
         // Assign titles to labels
         for index in 0...labels.count - 1 {
@@ -124,11 +98,13 @@ class ViewController: UIViewController {
         option4View.isHidden = true
         option5View.isHidden = true
         option6View.isHidden = true
+        optionsViews = []
+        labels = []
     }
     
     func buildOptionsButtons() {
-        let numOfOptionsPerQuiz = gameManager.numOfOptionsPerQuiz
-        switch numOfOptionsPerQuiz {
+        let numOfOptions = gameManager.numOfOptionsPerQuiz
+        switch numOfOptions {
         case 4:
             optionsViews += [option1View, option2View, option3View, option6View]
             labels += [option1Label, option2Label, option3Label, option6Label]
@@ -142,6 +118,8 @@ class ViewController: UIViewController {
         case 6:
             optionsViews += [option1View, option2View, option3View, option4View, option5View, option6View]
             labels += [option1Label, option2Label, option3Label, option4Label, option5Label, option6Label]
+            // change tag to last button to default
+            option6UpButton.tag = 6
         default: print("Invalid number of options")
         }
     }
@@ -152,7 +130,82 @@ class ViewController: UIViewController {
         }
     }
     
+    // Check order on shake gesture
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        shakeToCompleteLabel.isHidden = true
+        
+        // Get the current order displayed
+        var currentTitlesOrder = [String]()
+        for label in labels {
+            if let title = label.text {
+                currentTitlesOrder.append(title)
+            }
+        }
+        
+        // Check for correct order
+        if currentTitlesOrder == gameManager.seriesSortedByYear() {
+            print("Correct order!")
+            nextRoundSuccessView.isHidden = false
+            // Assign points
+            switch gameManager.level {
+            case .easy: gameManager.points += 1
+            case .medium: gameManager.points += 3
+            case .difficult: gameManager.points += 5
+            }
+            // Keep track of num. of rounds completed
+            gameManager.roundsCompleted += 1
+            print("Points: \(gameManager.points)")
+        } else {
+            print("Wrong order")
+            nextRoundFailView.isHidden = false
+        }
+    }
+    
     // MARK: - Actions
+    
+    @IBAction func selectLevel(_ sender: UIButton) {
+        for button in gameLevelButtons {
+            if button.currentTitle == gameManager.level.rawValue {
+                button.isSelected = true
+            } else {
+                button.isSelected = false
+            }
+        }
+        
+        // Reveal level buttons
+        gameLevelButtons.forEach { (button) in
+            UIView.animate(withDuration: 0.3, animations: {
+                button.isHidden = !button.isHidden
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    @IBAction func changeLevel(_ sender: UIButton) {
+        guard let title = sender.currentTitle, let level = GameLevel(rawValue: title) else {
+            return
+        }
+        // Select level
+        switch level {
+        case .easy: gameManager.level = .easy
+        case .medium: gameManager.level = .medium
+        case .difficult: gameManager.level = .difficult
+        }
+        
+        // Hide current options
+        hideAllOptions()
+        
+        // Display new options
+        displayNewRound()
+       
+        // Hide level buttons
+        gameLevelButtons.forEach { (button) in
+            UIView.animate(withDuration: 0.3, animations: {
+                button.isHidden = !button.isHidden
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
     
     @IBAction func moveUp(_ sender: UIButton) {
         let index = sender.tag - 1
