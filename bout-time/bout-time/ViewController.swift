@@ -72,18 +72,16 @@ class ViewController: UIViewController {
     // MARK: - Helpers
     
     func displayNewRound() {
+        // Layout
         nextRoundSuccessView.isHidden = true
         shakeToCompleteLabel.isHidden = false
         pointsLabel.text = "\(String(gameManager.points)) pts"
-        
         // Select random series
         gameManager.getRandomSetOfSeries()
-        
         // Display options
         buildOptionsButtons()
         displayOptionsButtons()
         self.view.layoutIfNeeded()
-        
         // Assign titles to labels
         for index in 0...labels.count - 1 {
             let series = gameManager.selectedSeries[index]
@@ -98,11 +96,16 @@ class ViewController: UIViewController {
         option4View.isHidden = true
         option5View.isHidden = true
         option6View.isHidden = true
-        optionsViews = []
-        labels = []
+        // Reset collections
+       //  optionsViews = []
+        // labels = []
     }
     
     func buildOptionsButtons() {
+        // Reset previous arrays
+        optionsViews = []
+        labels = []
+        // build new array of buttons
         let numOfOptions = gameManager.numOfOptionsPerQuiz
         switch numOfOptions {
         case 4:
@@ -122,6 +125,8 @@ class ViewController: UIViewController {
             option6UpButton.tag = 6
         default: print("Invalid number of options")
         }
+        print("Num. of buttons built: \(optionsViews.count)")
+        print("Num. of labels: \(labels.count)")
     }
     
     func displayOptionsButtons() {
@@ -143,7 +148,6 @@ class ViewController: UIViewController {
     // Check order on shake gesture
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         shakeToCompleteLabel.isHidden = true
-        
         // Get the current order displayed
         var currentTitlesOrder = [String]()
         for label in labels {
@@ -151,27 +155,20 @@ class ViewController: UIViewController {
                 currentTitlesOrder.append(title)
             }
         }
-        print(currentTitlesOrder)
+        print("Currrent order: \(currentTitlesOrder)")
         print(gameManager.seriesSortedByYear())
-        
         // Check for correct order
         if currentTitlesOrder == gameManager.seriesSortedByYear() {
             print("Correct order!")
             nextRoundSuccessView.isHidden = false
             showSolution()
-            
             // Assign points
-            switch gameManager.level {
-            case .easy: gameManager.points += 3
-            case .medium: gameManager.points += 5
-            case .difficult: gameManager.points += 10
-            }
+            gameManager.points += gameManager.pointsPerQuiz
             // Keep track of num. of rounds completed
             gameManager.roundsCompleted += 1
             print("Points: \(gameManager.points)")
-            
+            // Load next round
             loadNextRound(delay: 3)
-            
         } else {
             print("Wrong order")
             nextRoundFailView.alpha = 1
@@ -184,7 +181,6 @@ class ViewController: UIViewController {
     }
     
     func nextRound() {
-        
         if gameManager.roundsCompleted == gameManager.totRounds {
             // Game is over
      
@@ -198,8 +194,8 @@ class ViewController: UIViewController {
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
         // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
         
+        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
         // Executes the nextRound method at the dispatch time on the main queue
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
             self.nextRound()
@@ -208,6 +204,7 @@ class ViewController: UIViewController {
     
     // MARK: - Actions
     
+    // Reveal dropdown menu
     @IBAction func selectLevel(_ sender: UIButton) {
         for button in gameLevelButtons {
             if button.currentTitle == gameManager.level.rawValue {
@@ -226,6 +223,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Select level in dropdown menu
     @IBAction func changeLevel(_ sender: UIButton) {
         guard let title = sender.currentTitle, let level = GameLevel(rawValue: title) else {
             return
@@ -236,14 +234,10 @@ class ViewController: UIViewController {
         case .medium: gameManager.level = .medium
         case .difficult: gameManager.level = .difficult
         }
-        
         // Hide current options
         hideAllOptions()
-        
         // Display new options
-        gameManager.selectedSeries = []
         displayNewRound()
-       
         // Hide level buttons
         gameLevelButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {

@@ -12,26 +12,30 @@ import GameKit
 class GameManager {
     var seriesProvider = SeriesProvider()
     var level: GameLevel = .easy
-    var numOfOptionsPerQuiz = 0
+    var selectedSeries: [Series] = []
     var totRounds = 6
     var roundsCompleted = 0
     var points = 0
-    var selectedSeries: [Series] = []
-    var previousSelectedIndexes: [Int] = []
-    var previousSelectedYears: [Int] = []
-    
-    func getNumOfOptionsFromLevel() {
-        // Define num of options depending on game level selected
+    var numOfOptionsPerQuiz: Int {
         switch level {
-        case .easy: numOfOptionsPerQuiz = 4
-        case .medium: numOfOptionsPerQuiz = 5
-        case .difficult: numOfOptionsPerQuiz = 6
+        case .easy: return 4
+        case .medium: return 5
+        case .difficult: return 6
+        }
+    }
+    var pointsPerQuiz: Int {
+        switch level {
+        case .easy: return 10
+        case .medium: return 15
+        case .difficult: return 30
         }
     }
  
     func getRandomSetOfSeries() {
-        
-        getNumOfOptionsFromLevel()
+        var previousSelectedIndexes: [Int] = []
+        var previousSelectedYears: [Int] = []
+        // Reset previous array of series
+        selectedSeries = []
         
         // Select set of series
         for _ in 1...numOfOptionsPerQuiz {
