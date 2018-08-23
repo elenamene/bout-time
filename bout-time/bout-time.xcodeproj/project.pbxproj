@@ -13,11 +13,13 @@
 		F31B4EEA211C714400197F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EE9211C714400197F45 /* ViewController.swift */; };
 		F31B4EED211C714400197F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31B4EEB211C714400197F45 /* Main.storyboard */; };
 		F31B4EF2211C714500197F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31B4EF0211C714500197F45 /* LaunchScreen.storyboard */; };
-		F31B4EFA211C71F200197F45 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EF9211C71F200197F45 /* Series.swift */; };
-		F31B4EFC211C744F00197F45 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EFB211C744F00197F45 /* GameManager.swift */; };
+		F31B4EFA211C71F200197F45 /* TVSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EF9211C71F200197F45 /* TVSeries.swift */; };
+		F31B4EFC211C744F00197F45 /* SortingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EFB211C744F00197F45 /* SortingGame.swift */; };
 		F31B4EFE211D799500197F45 /* SeriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EFD211D799500197F45 /* SeriesProvider.swift */; };
-		F3AEB0832121D15D00AD0BEA /* GameLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AEB0822121D15D00AD0BEA /* GameLevels.swift */; };
+		F33C992C212D5B5700CCEC9B /* TVSeries.plist in Resources */ = {isa = PBXBuildFile; fileRef = F33C992B212D5B5700CCEC9B /* TVSeries.plist */; };
+		F3AEB0832121D15D00AD0BEA /* GameLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AEB0822121D15D00AD0BEA /* GameLevel.swift */; };
 		F3AEB08D2121FE2B00AD0BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AEB08C2121FE2B00AD0BEA /* Assets.xcassets */; };
+		F3D50768212DBBA500C27B84 /* PlistConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D50767212DBBA500C27B84 /* PlistConversion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +31,13 @@
 		F31B4EEC211C714400197F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F31B4EF1211C714500197F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31B4EF3211C714500197F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F31B4EF9211C71F200197F45 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
-		F31B4EFB211C744F00197F45 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		F31B4EF9211C71F200197F45 /* TVSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeries.swift; sourceTree = "<group>"; };
+		F31B4EFB211C744F00197F45 /* SortingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingGame.swift; sourceTree = "<group>"; };
 		F31B4EFD211D799500197F45 /* SeriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesProvider.swift; sourceTree = "<group>"; };
-		F3AEB0822121D15D00AD0BEA /* GameLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLevels.swift; sourceTree = "<group>"; };
+		F33C992B212D5B5700CCEC9B /* TVSeries.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TVSeries.plist; sourceTree = "<group>"; };
+		F3AEB0822121D15D00AD0BEA /* GameLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLevel.swift; sourceTree = "<group>"; };
 		F3AEB08C2121FE2B00AD0BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3D50767212DBBA500C27B84 /* PlistConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 				F3AEB08C2121FE2B00AD0BEA /* Assets.xcassets */,
 				F31B4EF0211C714500197F45 /* LaunchScreen.storyboard */,
 				F31B4EF3211C714500197F45 /* Info.plist */,
+				F33C992B212D5B5700CCEC9B /* TVSeries.plist */,
 			);
 			path = "bout-time";
 			sourceTree = "<group>";
@@ -81,10 +86,11 @@
 		F31B4EFF211DA7A800197F45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F31B4EF9211C71F200197F45 /* Series.swift */,
-				F31B4EFB211C744F00197F45 /* GameManager.swift */,
+				F31B4EF9211C71F200197F45 /* TVSeries.swift */,
+				F3AEB0822121D15D00AD0BEA /* GameLevel.swift */,
+				F31B4EFB211C744F00197F45 /* SortingGame.swift */,
 				F31B4EFD211D799500197F45 /* SeriesProvider.swift */,
-				F3AEB0822121D15D00AD0BEA /* GameLevels.swift */,
+				F3D50767212DBBA500C27B84 /* PlistConversion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31B4EF2211C714500197F45 /* LaunchScreen.storyboard in Resources */,
+				F33C992C212D5B5700CCEC9B /* TVSeries.plist in Resources */,
 				F3AEB08D2121FE2B00AD0BEA /* Assets.xcassets in Resources */,
 				F31B4EED211C714400197F45 /* Main.storyboard in Resources */,
 			);
@@ -170,12 +177,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31301D921232BD200DE6E35 /* labels.swift in Sources */,
-				F3AEB0832121D15D00AD0BEA /* GameLevels.swift in Sources */,
+				F3AEB0832121D15D00AD0BEA /* GameLevel.swift in Sources */,
 				F31B4EEA211C714400197F45 /* ViewController.swift in Sources */,
-				F31B4EFC211C744F00197F45 /* GameManager.swift in Sources */,
+				F31B4EFC211C744F00197F45 /* SortingGame.swift in Sources */,
+				F3D50768212DBBA500C27B84 /* PlistConversion.swift in Sources */,
 				F31B4EE8211C714400197F45 /* AppDelegate.swift in Sources */,
 				F31B4EFE211D799500197F45 /* SeriesProvider.swift in Sources */,
-				F31B4EFA211C71F200197F45 /* Series.swift in Sources */,
+				F31B4EFA211C71F200197F45 /* TVSeries.swift in Sources */,
 				F31301DB21232FC200DE6E35 /* view.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

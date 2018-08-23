@@ -7,9 +7,9 @@
 //
 
 import Foundation
-
+/*
 struct SeriesProvider {
-    var allSeries: [Series] = [
+    var allSeries: [TVSeries] = [
         Series(title: "House of Cards", year: 2013, url: URL(string: "https://www.imdb.com/title/tt1856010/")!),
         Series(title: "Orange Is the New Black", year: 2013, url: URL(string: "https://www.imdb.com/title/tt2372162/")!),
         Series(title: "Game of Thrones", year: 2011, url: URL(string: "https://www.imdb.com/title/tt0944947/")!),
@@ -25,6 +25,7 @@ struct SeriesProvider {
         Series(title: "Breaking Bad", year: 2008, url: URL(string: "https://www.imdb.com/title/tt0903747/")!),
         Series(title: "13 Reasons Why", year: 2017, url: URL(string: "https://www.imdb.com/title/tt1837492/")!),
         Series(title: "Black Mirror", year: 2011, url: URL(string: "https://www.imdb.com/title/tt2085059/")!),
+        
         Series(title: "Sons of Anarchy", year: 2008, url: URL(string: "https://www.imdb.com/title/tt1124373/")!),
         Series(title: "Pretty Little Liars", year: 2010, url: URL(string: "https://www.imdb.com/title/tt1578873/")!),
         Series(title: "New Girl ", year: 2011, url: URL(string: "https://www.imdb.com/title/tt1826940/")!),
@@ -101,7 +102,7 @@ struct SeriesProvider {
 }
 
 
-
+*/
 
 
 

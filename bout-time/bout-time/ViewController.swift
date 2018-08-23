@@ -38,13 +38,29 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextRoundFailView: UIImageView!
     
     @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     
     // MARK: - Properties
     
-    let gameManager = GameManager()
     var optionsViews = [UIStackView]()
     var labels = [UILabel]()
+    
+    // MARK: - Game initialization
+    
+    var game: SortingGame
+    
+    required init?(coder aDecoder: NSCoder) {
+        do {
+            let arrayOfTVSeries = try PlistConverter.importArray(fromPList: "TVSeries", ofType: "plist")
+            let seriesCollection = try collectionUnarchiver.collection(fromArray: arrayOfTVSeries)
+            self.game = TVSeriesGame.init(collection: seriesCollection)
+        } catch let error {
+            fatalError("\(error)")
+        }
+        
+        super.init(coder: aDecoder)
+    }
     
     // MARK: - View Lifecycle
     
@@ -75,17 +91,21 @@ class ViewController: UIViewController {
         // Layout
         nextRoundSuccessView.isHidden = true
         shakeToCompleteLabel.isHidden = false
-        pointsLabel.text = "\(String(gameManager.points)) pts"
-        // Select random series
-        gameManager.getRandomSetOfSeries()
+        pointsLabel.text = "Points: \(String(game.points))"
+        roundLabel.text = "Round: \(game.roundsCompleted)"
         // Display options
         buildOptionsButtons()
         displayOptionsButtons()
         self.view.layoutIfNeeded()
+        // Select random series
+        let selectedSeries = game.generateRandomList()
         // Assign titles to labels
         for index in 0...labels.count - 1 {
-            let series = gameManager.selectedSeries[index]
-            labels[index].text = series.title
+            labels[index].text = selectedSeries[index].title
+        }
+        
+        for tvSeries in selectedSeries {
+            print("\(tvSeries.title) \(tvSeries.year)")
         }
     }
     
@@ -106,7 +126,7 @@ class ViewController: UIViewController {
         optionsViews = []
         labels = []
         // build new array of buttons
-        let numOfOptions = gameManager.numOfOptionsPerQuiz
+        let numOfOptions = game.numOfItemsDisplayed
         switch numOfOptions {
         case 4:
             optionsViews += [option1View, option2View, option3View, option6View]
@@ -137,7 +157,7 @@ class ViewController: UIViewController {
     
     func showSolution() {
         for label in labels {
-            for series in gameManager.selectedSeries {
+            for series in game.selectedItems {
                 if label.text == series.title {
                     label.text = "\(series.title) - \(series.year)"
                 }
@@ -148,25 +168,22 @@ class ViewController: UIViewController {
     // Check order on shake gesture
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         shakeToCompleteLabel.isHidden = true
-        // Get the current order displayed
-        var currentTitlesOrder = [String]()
+        // Get the current order displayed in an array
+        var currentTitlesDisplayed = [String]()
         for label in labels {
             if let title = label.text {
-                currentTitlesOrder.append(title)
+                currentTitlesDisplayed.append(title)
             }
         }
-        print("Currrent order: \(currentTitlesOrder)")
-        print(gameManager.seriesSortedByYear())
+        print("Currrent order: \(currentTitlesDisplayed)")
         // Check for correct order
-        if currentTitlesOrder == gameManager.seriesSortedByYear() {
+        if game.checkOrder(of: currentTitlesDisplayed) {
             print("Correct order!")
+            print("Points: \(game.points)")
+            print("Rounds completed: \(game.roundsCompleted)")
             nextRoundSuccessView.isHidden = false
             showSolution()
-            // Assign points
-            gameManager.points += gameManager.pointsPerQuiz
-            // Keep track of num. of rounds completed
-            gameManager.roundsCompleted += 1
-            print("Points: \(gameManager.points)")
+            
             // Load next round
             loadNextRound(delay: 3)
         } else {
@@ -181,7 +198,7 @@ class ViewController: UIViewController {
     }
     
     func nextRound() {
-        if gameManager.roundsCompleted == gameManager.totRounds {
+        if game.roundsCompleted == game.roundsPerGame {
             // Game is over
      
         } else {
@@ -207,7 +224,7 @@ class ViewController: UIViewController {
     // Reveal dropdown menu
     @IBAction func selectLevel(_ sender: UIButton) {
         for button in gameLevelButtons {
-            if button.currentTitle == gameManager.level.rawValue {
+            if button.currentTitle == game.level.rawValue {
                 button.isSelected = true
             } else {
                 button.isSelected = false
@@ -230,10 +247,12 @@ class ViewController: UIViewController {
         }
         // Select level
         switch level {
-        case .easy: gameManager.level = .easy
-        case .medium: gameManager.level = .medium
-        case .difficult: gameManager.level = .difficult
+        case .easy: game.level = .easy
+        case .medium: game.level = .medium
+        case .difficult: game.level = .difficult
         }
+        print("Level selected: \(sender.currentTitle!)")
+        print("Game level: \(game.level)")
         // Hide current options
         hideAllOptions()
         // Display new options

@@ -8,8 +8,4 @@
 
 import Foundation
 
-struct Series {
-    let title: String
-    let year: Int
-    let url: URL
-}
+
