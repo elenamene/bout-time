@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         nextRoundSuccessView.isHidden = true
         shakeToCompleteLabel.isHidden = false
         pointsLabel.text = "Points: \(String(game.points))"
-        roundLabel.text = "Round: \(game.roundsCompleted)"
+        roundLabel.text = "Rounds: \(game.roundsCompleted)"
         // Display options
         buildOptionsButtons()
         displayOptionsButtons()
@@ -131,17 +131,17 @@ class ViewController: UIViewController {
         case 4:
             optionsViews += [option1View, option2View, option3View, option6View]
             labels += [option1Label, option2Label, option3Label, option6Label]
-            // change tag to last button
+            // set last button tag
             option6UpButton.tag = 4
         case 5:
             optionsViews += [option1View, option2View, option3View, option4View, option6View]
             labels += [option1Label, option2Label, option3Label, option4Label, option6Label]
-            // change tag to last button
+            // set last button tag
             option6UpButton.tag = 5
         case 6:
             optionsViews += [option1View, option2View, option3View, option4View, option5View, option6View]
             labels += [option1Label, option2Label, option3Label, option4Label, option5Label, option6Label]
-            // change tag to last button to default
+            // set last button tag to default
             option6UpButton.tag = 6
         default: print("Invalid number of options")
         }
@@ -197,10 +197,18 @@ class ViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let endViewController = segue.destination as! EndViewController
+        endViewController.pointsScored = game.points
+        endViewController.roundsCompleted = game.roundsCompleted
+        endViewController.totRounds = game.roundsPerGame
+        self.present(endViewController, animated: true, completion: nil)
+    }
+    
     func nextRound() {
         if game.roundsCompleted == game.roundsPerGame {
             // Game is over
-     
+            performSegue(withIdentifier: "endGame", sender: nil)
         } else {
             // Continue game
            displayNewRound()

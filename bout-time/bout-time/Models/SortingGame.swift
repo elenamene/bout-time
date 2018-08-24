@@ -60,7 +60,7 @@ class TVSeriesGame: SortingGame {
         case .difficult: return 30
         }
     }
-    let roundsPerGame: Int = 6
+    let roundsPerGame: Int = 1
     var roundsCompleted: Int = 0
     var numOfItemsDisplayed: Int {
         switch level {
