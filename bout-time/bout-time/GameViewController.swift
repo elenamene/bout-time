@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import SafariServices
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
     
     // MARK: - Outlets
-  
-    @IBOutlet var gameLevelButtons: [UIButton]!
-    @IBOutlet weak var selectLevelButton: UIButton!
+   
+    @IBOutlet weak var shakeToComplete: UILabel!
     
     @IBOutlet weak var option1View: UIStackView!
     @IBOutlet weak var option2View: UIStackView!
@@ -24,18 +24,17 @@ class ViewController: UIViewController {
     
     @IBOutlet var optionsSubViews: [UIView]!
     
-    @IBOutlet weak var option1Label: UILabel!
-    @IBOutlet weak var option2Label: UILabel!
-    @IBOutlet weak var option3Label: UILabel!
-    @IBOutlet weak var option4Label: UILabel!
-    @IBOutlet weak var option5Label: UILabel!
-    @IBOutlet weak var option6Label: UILabel!
+    @IBOutlet weak var option1Button: UIButton!
+    @IBOutlet weak var option2Button: UIButton!
+    @IBOutlet weak var option3Button: UIButton!
+    @IBOutlet weak var option4Button: UIButton!
+    @IBOutlet weak var option5Button: UIButton!
+    @IBOutlet weak var option6Button: UIButton!
     
+    @IBOutlet var UpDownButtons: [UIButton]!
     @IBOutlet weak var option6UpButton: UIButton!
     
-    @IBOutlet weak var shakeToCompleteLabel: UILabel!
-    @IBOutlet weak var nextRoundSuccessView: UIImageView!
-    @IBOutlet weak var nextRoundFailView: UIImageView!
+    @IBOutlet weak var nextRoundButton: UIButton!
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
@@ -44,11 +43,11 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     var optionsViews = [UIStackView]()
-    var labels = [UILabel]()
-    
-    // MARK: - Game initialization
-    
+    var buttons = [UIButton]()
+    var timer = GameTimer()
     var game: SortingGame
+    
+    // MARK: - Plist import
     
     required init?(coder aDecoder: NSCoder) {
         do {
@@ -62,147 +61,83 @@ class ViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - View Lifecycle
+    // MARK: - View Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideAllOptions()
+        
+        game.points = 0
+        game.roundsCompleted = 0
+    
         displayNewRound()
-        nextRoundFailView.isHidden = true
-        nextRoundSuccessView.isHidden = true
+        
+        // Observers
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTimeOver), name: Notification.Name(rawValue: "timeOver"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(handleTimeUpdate(notification:)), name: Notification.Name(rawValue: "timeUpdate"), object: nil)
     }
     
     override func viewWillLayoutSubviews() {
-        // Set style to views and labels
-        optionsSubViews.forEach { (view) in
+        for view in optionsSubViews {
             view.applyBasicStyle()
         }
-        option1Label.applyStyle()
-        option2Label.applyStyle()
-        option3Label.applyStyle()
-        option4Label.applyStyle()
-        option5Label.applyStyle()
-        option6Label.applyStyle()
     }
     
-    // MARK: - Helpers
+    // MARK: - Game Methods
     
     func displayNewRound() {
-        // Layout
-        nextRoundSuccessView.isHidden = true
-        shakeToCompleteLabel.isHidden = false
-        pointsLabel.text = "Points: \(String(game.points))"
-        roundLabel.text = "Rounds: \(game.roundsCompleted)"
-        // Display options
+        // Create new list of TVseries
         buildOptionsButtons()
         displayOptionsButtons()
-        self.view.layoutIfNeeded()
-        // Select random series
         let selectedSeries = game.generateRandomList()
-        // Assign titles to labels
-        for index in 0...labels.count - 1 {
-            labels[index].text = selectedSeries[index].title
+        for n in 0...buttons.count - 1 {
+            buttons[n].setTitle(selectedSeries[n].title, for: .normal)
         }
         
-        for tvSeries in selectedSeries {
-            print("\(tvSeries.title) \(tvSeries.year)")
-        }
-    }
+        // Set up display
+        view.layoutIfNeeded()
+        shakeToComplete.text = "Shake to complete"
+        nextRoundButton.isHidden = true
+        roundLabel.isHidden = false
+        timerLabel.isHidden = false
+        disableWebPageButtons()
     
-    func hideAllOptions() {
-        option1View.isHidden = true
-        option2View.isHidden = true
-        option3View.isHidden = true
-        option4View.isHidden = true
-        option5View.isHidden = true
-        option6View.isHidden = true
-        // Reset collections
-       //  optionsViews = []
-        // labels = []
-    }
-    
-    func buildOptionsButtons() {
-        // Reset previous arrays
-        optionsViews = []
-        labels = []
-        // build new array of buttons
-        let numOfOptions = game.numOfItemsDisplayed
-        switch numOfOptions {
-        case 4:
-            optionsViews += [option1View, option2View, option3View, option6View]
-            labels += [option1Label, option2Label, option3Label, option6Label]
-            // set last button tag
-            option6UpButton.tag = 4
-        case 5:
-            optionsViews += [option1View, option2View, option3View, option4View, option6View]
-            labels += [option1Label, option2Label, option3Label, option4Label, option6Label]
-            // set last button tag
-            option6UpButton.tag = 5
-        case 6:
-            optionsViews += [option1View, option2View, option3View, option4View, option5View, option6View]
-            labels += [option1Label, option2Label, option3Label, option4Label, option5Label, option6Label]
-            // set last button tag to default
-            option6UpButton.tag = 6
-        default: print("Invalid number of options")
-        }
-        print("Num. of buttons built: \(optionsViews.count)")
-        print("Num. of labels: \(labels.count)")
-    }
-    
-    func displayOptionsButtons() {
-        for view in optionsViews {
-            view.isHidden = false
-        }
-    }
-    
-    func showSolution() {
-        for label in labels {
-            for series in game.selectedItems {
-                if label.text == series.title {
-                    label.text = "\(series.title) - \(series.year)"
-                }
-            }
-        }
+        // Start timer
+        timer.start()
+        timerLabel.text = "\(timer.secondsRemaining)"
+        
+        game.roundsCompleted += 1
+        updatePointsAndRoundsLabels()
     }
     
     // Check order on shake gesture
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        shakeToCompleteLabel.isHidden = true
+        checkSolution()
+    }
+    
+    func checkSolution() {
+        disableButtons()
+        enableWebPageButtons()
+        timer.reset()
+        shakeToComplete.text = "Tap a series to know more!"
+        nextRoundButton.isHidden = false
+        
         // Get the current order displayed in an array
         var currentTitlesDisplayed = [String]()
-        for label in labels {
-            if let title = label.text {
+        for button in buttons {
+            if let title = button.currentTitle {
                 currentTitlesDisplayed.append(title)
             }
         }
-        print("Currrent order: \(currentTitlesDisplayed)")
-        // Check for correct order
+        
+        // Check if the order of the array is correct
         if game.checkOrder(of: currentTitlesDisplayed) {
-            print("Correct order!")
-            print("Points: \(game.points)")
-            print("Rounds completed: \(game.roundsCompleted)")
-            nextRoundSuccessView.isHidden = false
-            showSolution()
-            
-            // Load next round
-            loadNextRound(delay: 3)
+            // Correct solution
+            nextRoundButton.setImage(#imageLiteral(resourceName: "next_round_success"), for: .normal)
         } else {
-            print("Wrong order")
-            nextRoundFailView.alpha = 1
-            nextRoundFailView.isHidden = false
-            UIView.animate(withDuration: 0.3, delay: 2.0, animations: {
-                self.nextRoundFailView.alpha = 0
-            })
-            shakeToCompleteLabel.isHidden = false
+            // Wrong Solution
+            nextRoundButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let endViewController = segue.destination as! EndViewController
-        endViewController.pointsScored = game.points
-        endViewController.roundsCompleted = game.roundsCompleted
-        endViewController.totRounds = game.roundsPerGame
-        self.present(endViewController, animated: true, completion: nil)
     }
     
     func nextRound() {
@@ -227,68 +162,160 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
+    // MARK: - Helpers
     
-    // Reveal dropdown menu
-    @IBAction func selectLevel(_ sender: UIButton) {
-        for button in gameLevelButtons {
-            if button.currentTitle == game.level.rawValue {
-                button.isSelected = true
-            } else {
-                button.isSelected = false
+    func buildOptionsButtons() {
+        // Reset previous arrays
+        optionsViews = []
+        buttons = []
+        
+        // build new array of buttons
+        let numOfOptions = game.numOfItemsDisplayed
+        switch numOfOptions {
+        case 4:
+            optionsViews += [option1View, option2View, option3View, option6View]
+            buttons += [option1Button, option2Button, option3Button, option6Button]
+            // set last button tag
+            option6UpButton.tag = 4
+        case 5:
+            optionsViews += [option1View, option2View, option3View, option4View, option6View]
+            buttons += [option1Button, option2Button, option3Button, option4Button, option6Button]
+            // set last button tag
+            option6UpButton.tag = 5
+        case 6:
+            optionsViews += [option1View, option2View, option3View, option4View, option5View, option6View]
+            buttons += [option1Button, option2Button, option3Button, option4Button, option5Button, option6Button]
+            // set last button tag to default
+            option6UpButton.tag = 6
+            
+        default: print("Invalid number of options")
+        }
+    }
+    
+    func displayOptionsButtons() {
+        for view in optionsViews {
+            view.isHidden = false
+        }
+        enableButtons()
+    }
+    
+    func disableButtons() {
+        UpDownButtons.forEach { button in
+            button.isEnabled = false
+        }
+    }
+    
+    func enableButtons() {
+        UpDownButtons.forEach { button in
+            button.isEnabled = true
+        }
+    }
+    
+    func disableWebPageButtons() {
+        option1Button.isEnabled = false
+        option2Button.isEnabled = false
+        option3Button.isEnabled = false
+        option4Button.isEnabled = false
+        option5Button.isEnabled = false
+        option6Button.isEnabled = false
+    }
+    
+    func enableWebPageButtons() {
+        option1Button.isEnabled = true
+        option2Button.isEnabled = true
+        option3Button.isEnabled = true
+        option4Button.isEnabled = true
+        option5Button.isEnabled = true
+        option6Button.isEnabled = true
+    }
+    
+    func hideAllOptions() {
+        option1View.isHidden = true
+        option2View.isHidden = true
+        option3View.isHidden = true
+        option4View.isHidden = true
+        option5View.isHidden = true
+        option6View.isHidden = true
+    }
+    
+    func displayAllOptions() {
+        option1View.isHidden = false
+        option2View.isHidden = false
+        option3View.isHidden = false
+        option4View.isHidden = false
+        option5View.isHidden = false
+        option6View.isHidden = false
+    }
+    
+    func updatePointsAndRoundsLabels() {
+            pointsLabel.text = "Points: \(game.points)"
+            roundLabel.text = "Rounds: \(game.roundsCompleted)"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "endGame" {
+            if let endViewController = segue.destination as? EndViewController {
+                endViewController.pointsScored = game.points
+                endViewController.roundsSuccessfullyCompleted = game.roundsSuccessfullyCompleted
+                endViewController.totRounds = game.roundsPerGame
+            }
+        }
+    }
+    
+    @objc func handleTimeUpdate(notification: NSNotification) {
+       timerLabel.text = "\(timer.secondsRemaining)"
+    }
+    
+    @objc func handleTimeOver(notification: NSNotification) {
+        checkSolution()
+    }
+    
+    // MARK: - SafariViewController
+    
+    func showWebPage(ofSeries title: String) {
+        var stringURL = String()
+        for series in game.collection {
+            if series.title == title {
+                stringURL = series.url
             }
         }
         
-        // Reveal level buttons
-        gameLevelButtons.forEach { (button) in
-            UIView.animate(withDuration: 0.3, animations: {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            })
+        if let url = URL(string: stringURL) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
         }
     }
     
-    // Select level in dropdown menu
-    @IBAction func changeLevel(_ sender: UIButton) {
-        guard let title = sender.currentTitle, let level = GameLevel(rawValue: title) else {
-            return
-        }
-        // Select level
-        switch level {
-        case .easy: game.level = .easy
-        case .medium: game.level = .medium
-        case .difficult: game.level = .difficult
-        }
-        print("Level selected: \(sender.currentTitle!)")
-        print("Game level: \(game.level)")
-        // Hide current options
-        hideAllOptions()
-        // Display new options
-        displayNewRound()
-        // Hide level buttons
-        gameLevelButtons.forEach { (button) in
-            UIView.animate(withDuration: 0.3, animations: {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
+    // MARK: - Actions
     
     @IBAction func moveUp(_ sender: UIButton) {
         let index = sender.tag - 1
-        let titleSelected = labels[index].text
-        let previousTitle = labels[index - 1].text
-        labels[index].text = previousTitle
-        labels[index - 1].text = titleSelected
+        let titleSelected = buttons[index].currentTitle
+        let previousTitle = buttons[index - 1].currentTitle
+        buttons[index].setTitle(previousTitle, for: .normal)
+        buttons[index - 1].setTitle(titleSelected, for: .normal)
     }
     
     @IBAction func moveDown(_ sender: UIButton) {
         let index = sender.tag - 1
-        let titleSelected = labels[index].text
-        let followingTitle = labels[index + 1].text
-        labels[index].text = followingTitle
-        labels[index + 1].text = titleSelected
+        let titleSelected = buttons[index].currentTitle
+        let followingTitle = buttons[index + 1].currentTitle
+        buttons[index].setTitle(followingTitle, for: .normal)
+        buttons[index + 1].setTitle(titleSelected, for: .normal)
+    }
+    
+    @IBAction func startNextRound(_ sender: UIButton) {
+         loadNextRound(delay: 1)
+    }
+    
+    @IBAction func openWebPage(_ sender: UIButton) {
+        if let title = sender.currentTitle {
+            showWebPage(ofSeries: title)
+            print("Tap on \(title)")
+        }
     }
     
 }
-

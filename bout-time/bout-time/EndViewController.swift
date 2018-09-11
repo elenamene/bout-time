@@ -12,40 +12,34 @@ class EndViewController: UIViewController {
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var roundsLabel: UILabel!
+    @IBOutlet weak var playAgainButton: UIButton!
     
     // MARK: - Properties
     
     var pointsScored: Int?
-    var roundsCompleted: Int?
+    var roundsSuccessfullyCompleted: Int?
     var totRounds: Int?
     
     // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playAgainButton.roundCorners(corners: .allCorners, radius: 8)
+        
         if let pointsScored = pointsScored,
-            let roundsCompleted = roundsCompleted,
+            let roundsSuccessfullyCompleted = roundsSuccessfullyCompleted,
             let totRounds = totRounds {
             pointsLabel.text = "\(pointsScored)pts"
-            roundsLabel.text = "\(roundsCompleted)/\(totRounds)"
+            roundsLabel.text = "\(roundsSuccessfullyCompleted)/\(totRounds)"
         }
     }
     
     // MARK: - Actions
 
     @IBAction func playAgain(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "playAgain", sender: sender)
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+

@@ -34,6 +34,7 @@ protocol SortingGame: Randomable, Sortable {
     var pointsPerCorrectSolution: Int { get }
     var roundsPerGame: Int { get }
     var roundsCompleted: Int { get set }
+    var roundsSuccessfullyCompleted: Int { get set }
     
     init(collection: [SortableItem])
     func generateRandomList() -> [SortableItem]
@@ -60,7 +61,8 @@ class TVSeriesGame: SortingGame {
         case .difficult: return 30
         }
     }
-    let roundsPerGame: Int = 1
+    let roundsPerGame: Int = 3
+    var roundsSuccessfullyCompleted = 0
     var roundsCompleted: Int = 0
     var numOfItemsDisplayed: Int {
         switch level {
@@ -100,10 +102,10 @@ class TVSeriesGame: SortingGame {
         for series in seriesSortedByYear {
             titlesInCorrectOrder.append(series.title)
         }
-        print("Correct solution: \(titlesInCorrectOrder)")
+        print("Solution: \(titlesInCorrectOrder)")
         if list == titlesInCorrectOrder {
+            roundsSuccessfullyCompleted += 1
             points += pointsPerCorrectSolution
-            roundsCompleted += 1
             return true
         } else {
             return false

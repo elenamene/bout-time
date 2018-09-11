@@ -122,5 +122,501 @@
 		<key>url</key>
 		<string>https://www.imdb.com/title/tt2085059/</string>
 	</dict>
+    <dict>
+        <key>title</key>
+        <string>Sons of Anarchy</string>
+        <key>year</key>
+        <integer>2008</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1124373/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Pretty Little Liars</string>
+        <key>year</key>
+        <integer>2010</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1578873/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>New Girl</string>
+        <key>year</key>
+        <integer>2011</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1826940/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>House</string>
+        <key>year</key>
+        <integer>2004</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0412142/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Lost</string>
+        <key>year</key>
+        <integer>2004</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0411008/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Once Upon a Time</string>
+        <key>year</key>
+        <integer>2011</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1843230/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Crown</string>
+        <key>year</key>
+        <integer>2016</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt4786824/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Sherlock (UK)</string>
+        <key>year</key>
+        <integer>2010</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1475582/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Homeland</string>
+        <key>year</key>
+        <integer>2011</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1796960/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Big Bang Theory</string>
+        <key>year</key>
+        <integer>2007</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0898266/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Gotham</string>
+        <key>year</key>
+        <integer>2014</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt3749900/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Buffy the Vampire Slayer</string>
+        <key>year</key>
+        <integer>1996</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0118276/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Jessica Jones</string>
+        <key>year</key>
+        <integer>2015</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt2357547/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Simpsons</string>
+        <key>year</key>
+        <integer>1989</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0096697/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>True Blood</string>
+        <key>year</key>
+        <integer>2008</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0844441/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>ER</string>
+        <key>year</key>
+        <integer>1994</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0108757/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The X-Files</string>
+        <key>year</key>
+        <integer>1993</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0106179/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Ranch</string>
+        <key>year</key>
+        <integer>2016</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt4998212/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Modern Family</string>
+        <key>year</key>
+        <integer>2009</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1442437/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Glee</string>
+        <key>year</key>
+        <integer>2009</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1327801/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>One Tree Hill</string>
+        <key>year</key>
+        <integer>2003</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0368530/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Star Trek: The Next Generation</string>
+        <key>year</key>
+        <integer>1987</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0092455/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Star Wars: The Clone Wars</string>
+        <key>year</key>
+        <integer>2008</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0458290/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Gossip Girl</string>
+        <key>year</key>
+        <integer>2007</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0397442/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Desperate Housewives</string>
+        <key>year</key>
+        <integer>2004</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0410975/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Iron Fist</string>
+        <key>year</key>
+        <integer>2017</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0410975/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Law and Order</string>
+        <key>year</key>
+        <integer>1990</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0098844/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Gilmore Girls</string>
+        <key>year</key>
+        <integer>2000</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0238784/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Dark</string>
+        <key>year</key>
+        <integer>2017</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt5753856/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Family Guy</string>
+        <key>year</key>
+        <integer>1998</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0182576/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>CSI: Crime Scene Investigation</string>
+        <key>year</key>
+        <integer>2000</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0247082/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Fresh Prince of Bel-Air</string>
+        <key>year</key>
+        <integer>1990</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0098800/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Sex and the City</string>
+        <key>year</key>
+        <integer>1998</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0159206/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>South Park</string>
+        <key>year</key>
+        <integer>1997</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0121955/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Will and Grace</string>
+        <key>year</key>
+        <integer>1998</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0157246/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Star Trek: Deep Space Nine</string>
+        <key>year</key>
+        <integer>1993</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0106145/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Shameless</string>
+        <key>year</key>
+        <integer>2004</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0377260/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Weeds</string>
+        <key>year</key>
+        <integer>2005</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0439100/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Beverly Hills, 90210</string>
+        <key>year</key>
+        <integer>1990</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0098749/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The O.C.</string>
+        <key>year</key>
+        <integer>2003</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0362359/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Star Trek</string>
+        <key>year</key>
+        <integer>1966</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0060028/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Orphan Black</string>
+        <key>year</key>
+        <integer>2013</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt2234222/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Futurama</string>
+        <key>year</key>
+        <integer>1999</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0149460/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Dawson's Creek</string>
+        <key>year</key>
+        <integer>1998</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0118300/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Nanny</string>
+        <key>year</key>
+        <integer>1993</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0106080/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Scrubs</string>
+        <key>year</key>
+        <integer>2001</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0285403/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Happy Days</string>
+        <key>year</key>
+        <integer>1974</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0070992/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Skins</string>
+        <key>year</key>
+        <integer>2007</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0840196/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Love</string>
+        <key>year</key>
+        <integer>2016</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt4061080/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Baywatch</string>
+        <key>year</key>
+        <integer>1989</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0096542/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The OA</string>
+        <key>year</key>
+        <integer>2016</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt4635282/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Ugly Betty</string>
+        <key>year</key>
+        <integer>2006</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0805669/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Fawlty Towers</string>
+        <key>year</key>
+        <integer>1975</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0072500/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Ally McBeal</string>
+        <key>year</key>
+        <integer>1997</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0118254/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Melrose Place</string>
+        <key>year</key>
+        <integer>1992</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0103491/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Mr. Bean</string>
+        <key>year</key>
+        <integer>1990</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0096657/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Addams Family</string>
+        <key>year</key>
+        <integer>1964</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0057729/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Don't Trust the B---- in Apartment 23</string>
+        <key>year</key>
+        <integer>2012</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt1819509/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Daria</string>
+        <key>year</key>
+        <integer>1997</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0118298/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Beavis and Butt-Head</string>
+        <key>year</key>
+        <integer>1993</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0105950/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Flintstones</string>
+        <key>year</key>
+        <integer>1960</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0053502/</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Dexter</string>
+        <key>year</key>
+        <integer>2006</integer>
+        <key>url</key>
+        <string>https://www.imdb.com/title/tt0773262/</string>
+    </dict>
 </array>
 </plist>
