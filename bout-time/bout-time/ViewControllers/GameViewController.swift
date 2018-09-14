@@ -46,6 +46,7 @@ class GameViewController: UIViewController {
     var buttons = [UIButton]()
     var timer = GameTimer()
     var game: SortingGame
+    let soundEffectsPlayer = SoundEffectsPlayer()
     
     // MARK: - Plist import
     
@@ -72,7 +73,7 @@ class GameViewController: UIViewController {
     
         displayNewRound()
         
-        // Observers
+        // Observers for Timer
         NotificationCenter.default.addObserver(self, selector: #selector(handleTimeOver), name: Notification.Name(rawValue: "timeOver"), object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(handleTimeUpdate(notification:)), name: Notification.Name(rawValue: "timeUpdate"), object: nil)
     }
@@ -134,9 +135,11 @@ class GameViewController: UIViewController {
         if game.checkOrder(of: currentTitlesDisplayed) {
             // Correct solution
             nextRoundButton.setImage(#imageLiteral(resourceName: "next_round_success"), for: .normal)
+            soundEffectsPlayer.playSound(soundEffectsPlayer.sounds.correctSolution)
         } else {
             // Wrong Solution
             nextRoundButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
+            soundEffectsPlayer.playSound(soundEffectsPlayer.sounds.wrongSolution)
         }
     }
     

@@ -19,6 +19,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startButton.isEnabled = false
         startButton.roundCorners(corners: .allCorners, radius: 4)
         gameLevelButtons.forEach { button in
             button.roundCorners(corners: .allCorners, radius: 4)

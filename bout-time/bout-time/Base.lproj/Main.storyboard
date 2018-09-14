@@ -108,7 +108,6 @@
                                     <color key="titleColor" red="0.1176470588" green="0.14117647059999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="startGame:" destination="b9h-Ym-Pbh" eventType="touchUpInside" id="ixm-i7-eWo"/>
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="startGame" modalTransitionStyle="crossDissolve" id="bfq-uA-1dg"/>
                                 </connections>
                             </button>
@@ -633,7 +632,6 @@
                                             <color key="titleColor" red="1" green="0.99215686319999996" blue="0.90588235859999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="playAgain:" destination="NZ1-nj-aVh" eventType="touchUpInside" id="7Hs-4q-qYq"/>
                                             <segue destination="b9h-Ym-Pbh" kind="presentation" identifier="playAgain" modalTransitionStyle="crossDissolve" id="C21-HZ-d0y"/>
                                         </connections>
                                     </button>

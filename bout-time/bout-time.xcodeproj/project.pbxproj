@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30572B6214BB4EA003B21E3 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30572B5214BB4EA003B21E3 /* Audio.swift */; };
 		F31301DB21232FC200DE6E35 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31301DA21232FC200DE6E35 /* view.swift */; };
 		F31B4EE8211C714400197F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EE7211C714400197F45 /* AppDelegate.swift */; };
 		F31B4EEA211C714400197F45 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B4EE9211C714400197F45 /* GameViewController.swift */; };
@@ -20,9 +21,12 @@
 		F3BE9A2121307DF700755FD0 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BE9A2021307DF700755FD0 /* Timer.swift */; };
 		F3BE9A2A2132D65200755FD0 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BE9A292132D65200755FD0 /* StartViewController.swift */; };
 		F3D50768212DBBA500C27B84 /* PlistConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D50767212DBBA500C27B84 /* PlistConversion.swift */; };
+		F3E601A2214808580016448A /* IncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = F3E601A0214808580016448A /* IncorrectBuzz.wav */; };
+		F3E601A3214808580016448A /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = F3E601A1214808580016448A /* CorrectDing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F30572B5214BB4EA003B21E3 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F31301DA21232FC200DE6E35 /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
 		F31B4EE4211C714400197F45 /* bout-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bout-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31B4EE7211C714400197F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +42,8 @@
 		F3BE9A2021307DF700755FD0 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		F3BE9A292132D65200755FD0 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		F3D50767212DBBA500C27B84 /* PlistConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConversion.swift; sourceTree = "<group>"; };
+		F3E601A0214808580016448A /* IncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = IncorrectBuzz.wav; sourceTree = "<group>"; };
+		F3E601A1214808580016448A /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectDing.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F30572B7214BBF96003B21E3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F3BE9A292132D65200755FD0 /* StartViewController.swift */,
+				F31B4EE9211C714400197F45 /* GameViewController.swift */,
+				F3BE9A1A212EFD5200755FD0 /* EndViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F31B4EDB211C714400197F45 = {
 			isa = PBXGroup;
 			children = (
@@ -70,12 +86,11 @@
 		F31B4EE6211C714400197F45 /* bout-time */ = {
 			isa = PBXGroup;
 			children = (
+				F30572B7214BBF96003B21E3 /* ViewControllers */,
 				F31B4EFF211DA7A800197F45 /* Models */,
 				F3AEB0842121EA2200AD0BEA /* Extensions */,
+				F3E60199214803F30016448A /* Resources */,
 				F31B4EE7211C714400197F45 /* AppDelegate.swift */,
-				F3BE9A292132D65200755FD0 /* StartViewController.swift */,
-				F31B4EE9211C714400197F45 /* GameViewController.swift */,
-				F3BE9A1A212EFD5200755FD0 /* EndViewController.swift */,
 				F31B4EEB211C714400197F45 /* Main.storyboard */,
 				F3AEB08C2121FE2B00AD0BEA /* Assets.xcassets */,
 				F31B4EF0211C714500197F45 /* LaunchScreen.storyboard */,
@@ -88,6 +103,7 @@
 		F31B4EFF211DA7A800197F45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F30572B5214BB4EA003B21E3 /* Audio.swift */,
 				F3BE9A2021307DF700755FD0 /* Timer.swift */,
 				F3AEB0822121D15D00AD0BEA /* GameLevel.swift */,
 				F31B4EFB211C744F00197F45 /* SortingGame.swift */,
@@ -102,6 +118,15 @@
 				F31301DA21232FC200DE6E35 /* view.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3E60199214803F30016448A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F3E601A1214808580016448A /* CorrectDing.wav */,
+				F3E601A0214808580016448A /* IncorrectBuzz.wav */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31B4EF2211C714500197F45 /* LaunchScreen.storyboard in Resources */,
+				F3E601A3214808580016448A /* CorrectDing.wav in Resources */,
+				F3E601A2214808580016448A /* IncorrectBuzz.wav in Resources */,
 				F33C992C212D5B5700CCEC9B /* TVSeries.plist in Resources */,
 				F3AEB08D2121FE2B00AD0BEA /* Assets.xcassets in Resources */,
 				F31B4EED211C714400197F45 /* Main.storyboard in Resources */,
@@ -178,6 +205,7 @@
 			files = (
 				F3AEB0832121D15D00AD0BEA /* GameLevel.swift in Sources */,
 				F31B4EEA211C714400197F45 /* GameViewController.swift in Sources */,
+				F30572B6214BB4EA003B21E3 /* Audio.swift in Sources */,
 				F31B4EFC211C744F00197F45 /* SortingGame.swift in Sources */,
 				F3D50768212DBBA500C27B84 /* PlistConversion.swift in Sources */,
 				F3BE9A2A2132D65200755FD0 /* StartViewController.swift in Sources */,
