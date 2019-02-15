@@ -4,7 +4,7 @@
 
 The game involves having a list of Tv series and the user needs to put them in the correct chronological order. A single round of play consists of ordering four/five/six random TV series (depending on the level of difficulty choosen), and there are six rounds in each full game.
 
-![bout-time img](https://github.com/elenamene/bout-time/blob/master/iphone_aboutTime.png)
+![bout-time img](https://github.com/elenamene/bout-time/blob/master/iphone_aboutTime2.png)
 
 ### Required Tasks
 
