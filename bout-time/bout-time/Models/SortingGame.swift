@@ -37,6 +37,7 @@ protocol SortingGame: Randomable, Sortable {
     var roundsSuccessfullyCompleted: Int { get set }
     
     init(collection: [SortableItem])
+    
     func generateRandomList() -> [SortableItem]
     func checkOrder(of list: [String]) -> Bool
 }
