@@ -42,3 +42,5 @@ The game involves having a list of Tv series and the user needs to put them in t
 * Improved layout with the use of stack views.
 
 * Created a .plist to store the TV series. Each TV series is a dictionary with title, year and URL.
+
+* Extracted Timer and Audio form the view controller, modelled each in a separate object
