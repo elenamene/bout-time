@@ -52,9 +52,9 @@ class GameViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         do {
-            let arrayOfTVSeries = try PlistConverter.importArray(fromPList: "TVSeries", ofType: "plist")
-            let seriesCollection = try collectionUnarchiver.collection(fromArray: arrayOfTVSeries)
-            self.game = TVSeriesGame.init(collection: seriesCollection)
+            let list = try PlistConverter.list(fromFile: "TVSeries", ofType: "plist")
+            let collection = try collectionUnarchiver.collection(fromList: list)
+            self.game = TVSeriesGame.init(collection: collection)
         } catch let error {
             fatalError("\(error)")
         }
@@ -82,6 +82,11 @@ class GameViewController: UIViewController {
         for view in optionsSubViews {
             view.applyBasicStyle()
         }
+    }
+    
+    deinit {
+        // Clear observers
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Game Methods
@@ -259,7 +264,7 @@ class GameViewController: UIViewController {
         if segue.identifier == "endGame" {
             if let endViewController = segue.destination as? EndViewController {
                 endViewController.pointsScored = game.points
-                endViewController.roundsSuccessfullyCompleted = game.roundsSuccessfullyCompleted
+                endViewController.roundsSuccessfullyCompleted = game.roundsWon
                 endViewController.totRounds = game.roundsPerGame
             }
         }
@@ -277,7 +282,7 @@ class GameViewController: UIViewController {
     
     func showWebPage(ofSeries title: String) {
         var stringURL = String()
-        for series in game.collection {
+        for series in game.collectionOfTvSeries {
             if series.title == title {
                 stringURL = series.url
             }
